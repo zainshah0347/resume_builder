@@ -130,6 +130,7 @@ class Resume extends React.Component<FormProps> {
               return <button  className='p-2 bg-blue-400 font-bold rounded-md mt-8'>Print Resume</button>;
             }}
             content={() => this.componentRef.current}
+            documentTitle="Resume"
             pageStyle="print"
           />
 
