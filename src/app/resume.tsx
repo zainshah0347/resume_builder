@@ -84,7 +84,7 @@ class Resume extends React.Component<FormProps> {
           <h1 className="font-bold text-xl mt-6 mb-2">Personal Information</h1>
           <hr />
 
-          <h1 className="font-bold inline">Father's Name:</h1> <p className="inline">{fatherName}</p>
+          <h1 className="font-bold inline">{"Father's Name:"}</h1> <p className="inline">{fatherName}</p>
           <br />
           <h1 className="font-bold inline">Email:</h1> <p className="inline">{email}</p>
           <br />

@@ -1,5 +1,5 @@
 'use client'
-import { useState, ChangeEvent, useRef } from "react";
+import { useState, ChangeEvent} from "react";
 import Resume from "./resume";
 
 export default function Form() {
