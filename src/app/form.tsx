@@ -196,7 +196,7 @@ export default function Form() {
             </div>
 
 
-            <div className="border-2 border-slate-500 w-[70%] mx-auto bg-white flex justify-center">
+            <div className=" border-slate-500 w-[70%] mx-auto bg-white flex justify-center">
                 {showResume && <button onClick={() => setShowResume(false)} className='pr-4 pl-4 pt-2 pb-2 mt-1 mb-1 bg-blue-400 font-bold rounded-md' >Edit</button>}
             </div>
         </div>
