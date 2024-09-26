@@ -6,7 +6,7 @@ export default function Home() {
 
 
   return (
-    <div className='p-4 justify-center gap-2'>
+    <div className='p-4 bg-slate-400'>
       <Form/>
     </div>
   );

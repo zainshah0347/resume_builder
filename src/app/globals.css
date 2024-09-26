@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 legend {
   font-size: 1rem;
   margin-bottom: 0.5rem;

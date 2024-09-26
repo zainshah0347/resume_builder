@@ -1,5 +1,5 @@
 'use client'
-import { useState, ChangeEvent ,useRef } from "react";
+import { useState, ChangeEvent, useRef } from "react";
 import Resume from "./resume";
 
 export default function Form() {
@@ -44,8 +44,8 @@ export default function Form() {
 
     }
 
-    
-    
+
+
     function loginSubmit() {
         setbtnClick(true)
         setShowResume(true)
@@ -63,135 +63,142 @@ export default function Form() {
     }
 
 
-    const handleImageChange =(event: React.ChangeEvent<HTMLInputElement>)=>{
-        const file = event.target.files?.[0]; // Optional chaining to ensure file exists
+    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]; // Ensure file exists
         if (file) {
-          const imageUrl = URL.createObjectURL(file); // Create object URL
-          setImageSrc(imageUrl); // Set image URL to state
-
-          const blobFile = file as Blob;
-
-          // Now you can use the blobFile wherever Blob is expected
-          console.log(blobFile);
-
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImageSrc(reader.result as string); // Set the base64 image URL
+            };
+            reader.readAsDataURL(file); // Convert the file to a base64 string
         } else {
-          console.error("No file selected or invalid file input"); // Error handling
+            console.error("No file selected or invalid file input");
         }
     }
 
 
 
+
     return (
         <div>
-            {!showResume ? <div id='form'>
-                <form action={loginSubmit} className=''>
-                    <div className='border-2 border-black w-[650px] p-2'>
-                        <label htmlFor="Name" className='cursor-pointer'>Name:</label><br />
-                        <input value={name} typeof='email' onChange={(e) => setName(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='Name' /><br />
+            <div className="w-full mx-auto">
+                {!showResume ? <div id='form' className="justify-center flex">
 
-                        <label htmlFor="imageChanger">Upload Image</label> <input accept="image/*"  type="file" onChange={handleImageChange} name="" id="imageChanger" /><br />
+                    <form action={loginSubmit} className='bg-white rounded-md p-2 leading-8'>
+                        <h1 className="text-4xl text-center mb-10">Resume Builder</h1>
+                        <div className='border-2 border-slate-600 w-[650px] p-2 mt-4 rounded-md'>
+                            <label htmlFor="Name" className='cursor-pointer font-bold'>Name :</label><br />
+                            <input value={name} typeof='text' onChange={(e) => setName(e.target.value)} placeholder="User Name" className='border-slate-400 border-2 w-full p-2' type="text" id='Name' /><br />
 
-                        <label htmlFor="Name" className='cursor-pointer'>Father's Name:</label><br />
-                        <input className='border-black border-2 w-full p-2' onChange={(e) => setFathername(e.target.value)} type="text" id='Name' /><br />
-                        <label htmlFor="Name" className='cursor-pointer'>Email:</label><br />
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='Name' /><br />
+                            <label htmlFor="imageChanger" className="font-bold">Upload Profile Picture : </label> <input accept="image/*" className="mt-5" type="file" onChange={handleImageChange} name="" id="imageChanger" /><br />
 
-
-
-
-                        <div className='flex pt-3 pb-2'>
-                            <p>Gender:</p>
+                            <label htmlFor="fathername" className='cursor-pointer font-bold'>Father's Name :</label><br />
+                            <input value={fatherName} className='border-slate-400 border-2 w-full p-2' onChange={(e) => setFathername(e.target.value)} type="text" id='fathername' /><br />
+                            <label htmlFor="email" className='cursor-pointer font-bold'>Email :</label><br />
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="email" id='email' /><br />
 
 
-                            <input type="radio"
-                                id="male"
-                                className='ml-8'
-                                name="gender"
-                                value="Male"
-                                checked={gender === "Male"}
-                                onChange={handleOptionChange} />
-                            <label htmlFor="male" className=' mr-8'>Male</label>
 
-                            <input type="radio"
-                                id="female"
-                                name="gender"
-                                value="Female"
-                                checked={gender === "Female"}
-                                onChange={handleOptionChange} />
-                            <label htmlFor="female">Female</label>
+
+                            <div className='flex pt-3 pb-2'>
+                                <label htmlFor="male" className='cursor-pointer font-bold'>Gender :</label><br />
+
+
+
+                                <input type="radio"
+                                    id="male"
+                                    className='ml-8'
+                                    name="gender"
+                                    value="Male"
+                                    checked={gender === "Male"}
+                                    onChange={handleOptionChange} />
+                                <label htmlFor="male" className=' mr-8'>Male</label>
+
+                                <input type="radio"
+                                    id="female"
+                                    name="gender"
+                                    value="Female"
+                                    checked={gender === "Female"}
+                                    onChange={handleOptionChange} />
+                                <label htmlFor="female">Female</label>
+                            </div>
+
+
+
+
+
+
+                            <label htmlFor="dateofbirth" className='cursor-pointer font-bold'>Date of Birth :</label><br />
+                            <input value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="date" id='dateofbirth' /><br />
+
+                            <div className='flex pb-2 pt-3 mt-4'>
+                                <label htmlFor="single" className='cursor-pointer font-bold'>Martial Status :</label><br />
+                                <input
+                                    checked={martialStatus === "Single"}
+                                    value="Single"
+                                    name="martialStatus"
+                                    onChange={handleMartialStatusChange}
+                                    className='border-black border-2 ml-8'
+                                    type="radio"
+                                    id='single' />
+                                <label htmlFor="single" className='cursor-pointer mr-8'>Single</label>
+
+                                <input
+                                    checked={martialStatus === "Married"}
+                                    name="martialStatus"
+                                    value="Married"
+                                    onChange={handleMartialStatusChange}
+                                    className='border-black border-2'
+                                    type="radio"
+                                    id='married' />
+                                <label htmlFor="married" className='cursor-pointer'>Married</label><br />
+                            </div>
+
+
+                            <label htmlFor="phone" className='cursor-pointer font-bold'>Phone :</label><br />
+                            <input value={phoneNumber} onChange={(e: ChangeEvent<HTMLInputElement>) => setPhoneNumber(e.target.value)}
+                                className='border-slate-400 border-2 w-full p-2' id="phone" /><br />
+                        </div>
+
+                        <div className='border-2 w-[650px] p-2 mt-4 border-slate-600 rounded-md'>
+                            <label htmlFor="degree" className='cursor-pointer font-bold'>Degree :</label><br />
+                            <input value={degree} onChange={(e) => setDegree(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='degree' /><br />
+                            <label htmlFor="institute" className='cursor-pointer font-bold'>Institute :</label><br />
+                            <input value={institute} onChange={(e) => setInstitute(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='institute' /><br />
+                            <label htmlFor="grade" className='cursor-pointer font-bold'>Grade :</label><br />
+                            <input value={grade} onChange={(e) => setGrade(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='grade' /><br />
+                            <label htmlFor="awards" className='cursor-pointer font-bold'>Awards :</label><br />
+                            <input value={awards} onChange={(e) => setAwards(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='awards' /><br />
+                        </div>
+                        <div className='border-2  w-[650px] p-2 mt-4 border-slate-600 rounded-md'>
+                            <label htmlFor="generalSkills" className='cursor-pointer font-bold'>Genral Skills :</label><br />
+                            <input value={generalSkills} onChange={(e) => setGeneralSkills(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='generalSkills' /><br />
+                            <label htmlFor="computerSkills" className='cursor-pointer font-bold'>Computer Skills :</label><br />
+                            <input value={computerSkills} onChange={(e) => setComputerSkills(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='computerSkills' /><br />
+                        </div >
+
+                        <div className='border-2 w-[650px] p-2 mt-4 border-slate-600 rounded-md'>
+                            <label htmlFor="jobTitle" className='cursor-pointer font-bold'>Job Title :</label><br />
+                            <input value={experience} onChange={(e) => setExperience(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='jobTitle' /><br />
+                            <label htmlFor="comapanyName" className='cursor-pointer font-bold'>Company Name :</label><br />
+                            <input value={companyName} onChange={(e) => setCompanyName(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='comapanyName' /><br />
                         </div>
 
 
+                        <button type='button' onClick={loginSubmit} className='mt-2 p-2 bg-blue-400 font-bold rounded-md'>
+                            Submit
+                        </button>
+                    </form>
+                </div>
 
-
-
-
-                        <label htmlFor="Name" className='cursor-pointer'>Date of Birth:</label><br />
-                        <input onChange={(e) => setDateOfBirth(e.target.value)} className='border-black border-2 w-full p-2' type="date" id='Name' /><br />
-
-                        <div className='flex pb-2 pt-3'>
-                            <p>Martial Status:</p>
-                            <input
-                                checked={martialStatus === "Single"}
-                                value="Single"
-                                name="martialStatus"
-                                onChange={handleMartialStatusChange}
-                                className='border-black border-2 ml-8'
-                                type="radio"
-                                id='single' />
-                            <label htmlFor="single" className='cursor-pointer mr-8'>Single</label>
-
-                            <input
-                                checked={martialStatus === "Married"}
-                                name="martialStatus"
-                                value="Married"
-                                onChange={handleMartialStatusChange}
-                                className='border-black border-2'
-                                type="radio"
-                                id='married' />
-                            <label htmlFor="married" className='cursor-pointer'>Married</label><br />
-                        </div>
-
-
-                        <label htmlFor="phone" className='cursor-pointer'>Phone:</label><br />
-                        <input onChange={(e: ChangeEvent<HTMLInputElement>) => setPhoneNumber(e.target.value)}
-                            className='border-black border-2 w-full p-2' id="phone" /><br />
-                    </div>
-
-                    <div className='border-2 border-black w-[650px] p-2'>
-                        <label htmlFor="degree" className='cursor-pointer'>Degree:</label><br />
-                        <input value={degree} onChange={(e) => setDegree(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='degree' /><br />
-                        <label htmlFor="institute" className='cursor-pointer'>Institute:</label><br />
-                        <input value={institute} onChange={(e) => setInstitute(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='institute' /><br />
-                        <label htmlFor="grade" className='cursor-pointer'>Grade:</label><br />
-                        <input value={grade} onChange={(e) => setGrade(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='grade' /><br />
-                        <label htmlFor="awards" className='cursor-pointer'>Awards:</label><br />
-                        <input value={awards} onChange={(e) => setAwards(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='awards' /><br />
-                    </div>
-                    <div className='border-2 border-black w-[650px] p-2'>
-                        <label htmlFor="generalSkills" className='cursor-pointer'>Genral Skills:</label><br />
-                        <input value={generalSkills} onChange={(e) => setGeneralSkills(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='generalSkills' /><br />
-                        <label htmlFor="computerSkills" className='cursor-pointer'>Computer Skills:</label><br />
-                        <input value={computerSkills} onChange={(e) => setComputerSkills(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='computerSkills' /><br />
-                    </div >
-
-                    <div className='border-2 border-black w-[650px] p-2'>
-                        <label htmlFor="jobTitle" className='cursor-pointer'>Job Title:</label><br />
-                        <input value={experience} onChange={(e) => setExperience(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='jobTitle' /><br />
-                        <label htmlFor="comapanyName" className='cursor-pointer'>Company Name:</label><br />
-                        <input value={companyName} onChange={(e) => setCompanyName(e.target.value)} className='border-black border-2 w-full p-2' type="text" id='comapanyName' /><br />
-                    </div>
-
-
-                    <button type='button' onClick={loginSubmit} className='border-2 border-black mt-2 p-2'>
-                        Submit
-                    </button>
-                </form>
+                    :
+                    <Resume form={formData} />}
             </div>
 
-                :
-                <Resume form={formData} />}
-            {showResume && <button onClick={() => setShowResume(false)}>Edit</button>}
+
+            <div className="border-2 border-slate-500 w-[70%] mx-auto bg-white flex justify-center">
+                {showResume && <button onClick={() => setShowResume(false)} className='pr-4 pl-4 pt-2 pb-2 mt-1 mb-1 bg-blue-400 font-bold rounded-md' >Edit</button>}
+            </div>
         </div>
 
     )
