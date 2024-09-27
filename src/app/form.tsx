@@ -1,5 +1,5 @@
 'use client'
-import { useState, ChangeEvent} from "react";
+import { useState, ChangeEvent } from "react";
 import Resume from "./resume";
 
 export default function Form() {
@@ -82,11 +82,11 @@ export default function Form() {
     return (
         <div>
             <div className="w-full mx-auto">
-                {!showResume ? <div id='form' className="justify-center flex">
+                {!showResume ? <div id='form' className="justify-center flex ">
 
-                    <form action={loginSubmit} className='bg-white rounded-md p-2 leading-8'>
+                    <form action={loginSubmit} className='bg-white rounded-md p-2 w-full leading-8 lg:w-[60%] md:w-[70%]'>
                         <h1 className="text-4xl text-center mb-10">Resume Builder</h1>
-                        <div className='border-2 border-slate-600 w-[650px] p-2 mt-4 rounded-md'>
+                        <div className='border-2 border-slate-600 p-2 mt-4 rounded-md '>
                             <label htmlFor="Name" className='cursor-pointer font-bold'>Name :</label><br />
                             <input value={name} typeof='text' onChange={(e) => setName(e.target.value)} placeholder="User Name" className='border-slate-400 border-2 w-full p-2' type="text" id='Name' /><br />
 
@@ -160,7 +160,7 @@ export default function Form() {
                                 className='border-slate-400 border-2 w-full p-2' id="phone" /><br />
                         </div>
 
-                        <div className='border-2 w-[650px] p-2 mt-4 border-slate-600 rounded-md'>
+                        <div className='border-2 p-2 mt-4 border-slate-600 rounded-md'>
                             <label htmlFor="degree" className='cursor-pointer font-bold'>Degree :</label><br />
                             <input value={degree} onChange={(e) => setDegree(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='degree' /><br />
                             <label htmlFor="institute" className='cursor-pointer font-bold'>Institute :</label><br />
@@ -170,14 +170,14 @@ export default function Form() {
                             <label htmlFor="awards" className='cursor-pointer font-bold'>Awards :</label><br />
                             <input value={awards} onChange={(e) => setAwards(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='awards' /><br />
                         </div>
-                        <div className='border-2  w-[650px] p-2 mt-4 border-slate-600 rounded-md'>
+                        <div className='border-2 p-2 mt-4 border-slate-600 rounded-md'>
                             <label htmlFor="generalSkills" className='cursor-pointer font-bold'>Genral Skills :</label><br />
                             <input value={generalSkills} onChange={(e) => setGeneralSkills(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='generalSkills' /><br />
                             <label htmlFor="computerSkills" className='cursor-pointer font-bold'>Computer Skills :</label><br />
                             <input value={computerSkills} onChange={(e) => setComputerSkills(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='computerSkills' /><br />
                         </div >
 
-                        <div className='border-2 w-[650px] p-2 mt-4 border-slate-600 rounded-md'>
+                        <div className='border-2 p-2 mt-4 border-slate-600 rounded-md'>
                             <label htmlFor="jobTitle" className='cursor-pointer font-bold'>Job Title :</label><br />
                             <input value={experience} onChange={(e) => setExperience(e.target.value)} className='border-slate-400 border-2 w-full p-2' type="text" id='jobTitle' /><br />
                             <label htmlFor="comapanyName" className='cursor-pointer font-bold'>Company Name :</label><br />
@@ -196,7 +196,7 @@ export default function Form() {
             </div>
 
 
-            <div className=" border-slate-500 w-[70%] mx-auto bg-white flex justify-center">
+            <div className=" border-slate-500 mx-auto bg-white flex justify-center">
                 {showResume && <button onClick={() => setShowResume(false)} className='pr-4 pl-4 pt-2 pb-2 mt-1 mb-1 bg-blue-400 font-bold rounded-md' >Edit</button>}
             </div>
         </div>
