@@ -84,7 +84,7 @@ export default function Form() {
             <div className="w-full mx-auto">
                 {!showResume ? <div id='form' className="justify-center flex ">
 
-                    <form action={loginSubmit} className='bg-white rounded-md p-2 w-full leading-8 lg:w-[60%] md:w-[70%]'>
+                    <form action={loginSubmit} className='bg-white rounded-md p-4 w-full leading-8 lg:w-[60%] md:w-[70%] sm:w-[80%] xs:w-full shadow-lg'>
                         <h1 className="text-4xl text-center mb-10">Resume Builder</h1>
                         <div className='border-2 border-slate-600 p-2 mt-4 rounded-md '>
                             <label htmlFor="Name" className='cursor-pointer font-bold'>Name :</label><br />
