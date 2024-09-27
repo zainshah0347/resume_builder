@@ -99,7 +99,7 @@ export default function Form() {
                                     <label htmlFor="male" className='cursor-pointer font-bold'>Gender :</label>
                                     <input type="radio"
                                         id="male"
-                                        className='ml-8'
+                                        className='ml-2'
                                         name="gender"
                                         value="Male"
                                         checked={gender === "Male"}
@@ -125,7 +125,7 @@ export default function Form() {
                                         value="Single"
                                         name="martialStatus"
                                         onChange={handleMartialStatusChange}
-                                        className='ml-8'
+                                        className='ml-2'
                                         type="radio"
                                         id='single'
                                     />
