@@ -195,9 +195,9 @@ export default function Form() {
                 )}
             </div>
 
-            <div className="border-slate-500 mx-auto bg-white flex justify-center">
+            <div className="border-slate-500 mx-auto flex justify-center">
                 {showResume && (
-                    <button onClick={() => setShowResume(false)} className='pr-4 pl-4 pt-2 pb-2 mt-1 mb-1 bg-blue-500 font-bold rounded-md hover:bg-blue-600 transition'>
+                    <button onClick={() => setShowResume(false)} className='p-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition '>
                         Edit
                     </button>
                 )}

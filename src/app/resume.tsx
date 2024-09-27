@@ -65,7 +65,7 @@ class Resume extends React.Component<FormProps> {
     } = this.props.form;
 
     return (
-      <div className="border-2 border-slate-500 pr-4 mt-4 pl-4 w-[70%] mx-auto bg-white">
+      <div className="border-2 border-slate-500 pr-4 mt-4 pl-4 w-full mx-auto bg-white lg:w-[60%] md:w-[70%] sm:w-[80%] xs:w-full shadow-lg">
         {/* Assign the ref here */}
         <div ref={this.componentRef} className="leading-10 bg-white">
           <div className="flex items-center justify-between mt-4">
@@ -127,7 +127,7 @@ class Resume extends React.Component<FormProps> {
         <div className="pt-2 flex justify-center mb-1">
           <ReactToPrint
             trigger={() => {
-              return <button  className='p-2 bg-blue-400 font-bold rounded-md mt-8'>Print Resume</button>;
+              return <button  className='p-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition '>Print Resume</button>;
             }}
             content={() => this.componentRef.current}
             documentTitle="Resume"
